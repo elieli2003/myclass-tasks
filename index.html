@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyClass Tasks - Student Productivity System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="MyClassTasks" />
+    <link rel="manifest" href="manifest.json" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/classic.min.css"/>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1><i class="fas fa-graduation-cap"></i> MyClass Tasks</h1>
+            <p>Organize your subjects and track your activities</p>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Home Screen -->
+            <div id="home-screen" class="screen active">
+                <div class="screen-header">
+                    <h2><i class="fas fa-book"></i> Your Subjects</h2>
+                    <button id="add-subject-btn" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Add Subject
+                    </button>
+                </div>
+                
+                <div id="subjects-list" class="subjects-grid">
+                    <!-- Subjects will be dynamically added here -->
+                </div>
+            </div>
+
+            <!-- Subject Detail Screen -->
+            <div id="subject-detail-screen" class="screen">
+                <div class="screen-header">
+                    <button id="back-to-home" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left"></i> Back
+                    </button>
+                    <h2 id="subject-title"><i class="fas fa-book"></i> Subject Name</h2>
+                    <button id="add-activity-btn" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Add Activity
+                    </button>
+                </div>
+                
+                <div id="activities-list" class="activities-list">
+                    <!-- Activities will be dynamically added here -->
+                </div>
+            </div>
+        </main>
+
+        <!-- Modals -->
+        <!-- Add/Edit Subject Modal -->
+        <div id="subject-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="subject-modal-title">Add New Subject</h3>
+                    <button class="close-btn" id="close-subject-modal">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <form id="subject-form">
+                    <div class="form-group">
+                        <label for="subject-name">Subject Name</label>
+                        <input type="text" id="subject-name" required placeholder="e.g., Mathematics">
+                    </div>
+                    <div class="form-group">
+                        <label for="subject-color">Color Theme</label>
+                        <div id="color-circle-picker" class="color-circle-picker">
+                            <span class="color-circle" data-color="#4CAF50" style="background:#4CAF50"></span>
+                            <span class="color-circle" data-color="#2196F3" style="background:#2196F3"></span>
+                            <span class="color-circle" data-color="#FF9800" style="background:#FF9800"></span>
+                            <span class="color-circle" data-color="#E91E63" style="background:#E91E63"></span>
+                            <span class="color-circle" data-color="#9C27B0" style="background:#9C27B0"></span>
+                            <span class="color-circle" data-color="#F44336" style="background:#F44336"></span>
+                            <span class="color-circle" data-color="#607D8B" style="background:#607D8B"></span>
+                            <span class="color-circle custom-color-circle" title="Choose custom color">
+                                <i class="fas fa-palette palette-icon"></i>
+                                <input type="color" id="custom-color-input" style="display:none;">
+                            </span>
+                            <input type="hidden" id="subject-color" value="#4CAF50">
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" id="cancel-subject">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Save Subject</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Add/Edit Activity Modal -->
+        <div id="activity-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="activity-modal-title">Add New Activity</h3>
+                    <button class="close-btn" id="close-activity-modal">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <form id="activity-form">
+                    <div class="form-group">
+                        <label for="activity-title">Activity Title</label>
+                        <input type="text" id="activity-title" required placeholder="e.g., Assignment 1">
+                    </div>
+                    <div class="form-group">
+                        <label for="activity-type">Activity Type</label>
+                        <select id="activity-type" required>
+                            <option value="">Select type...</option>
+                            <option value="Assignment">Assignment</option>
+                            <option value="Report">Report</option>
+                            <option value="Project">Project</option>
+                            <option value="Exam">Exam</option>
+                            <option value="Quiz">Quiz</option>
+                            <option value="Presentation">Presentation</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="activity-description">Description (Optional)</label>
+                        <textarea id="activity-description" placeholder="Add any additional details..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="activity-deadline">Deadline</label>
+                        <input type="datetime-local" id="activity-deadline" required>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" id="cancel-activity">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Save Activity</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="custom-pickr-container" style="display:none; position:fixed; left:50%; top:50%; transform:translate(-50%,-50%); z-index:2000;"></div>
+
+    <script src="script.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+          window.addEventListener('load', function() {
+            navigator.serviceWorker.register('service-worker.js'); // or 'pwabuilder-sw.js' if that's the filename
+          });
+        }
+      </script>
+</body>
+</html> 
