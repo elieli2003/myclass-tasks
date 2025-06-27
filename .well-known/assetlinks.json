@@ -1,12 +1,12 @@
-   [
-     {
-       "relation": ["delegate_permission/common.handle_all_urls"],
-       "target": {
-         "namespace": "android_app",
-         "package_name": "com.myclasstasks.app",
-         "sha256_cert_fingerprints": [
-           "14:73:B3:88:A8:02:DB:34:0C:04:F8:B9:96:0A:82:7A:80:4E:62:E0:4D:DF:13:86:A4:9E:CC:14:7F:E2:57:70"
-         ]
-       }
-     }
-   ]
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.myclasstasks.app",
+      "sha256_cert_fingerprints": [
+        "57:FE:09:0C:D3:86:0D:62:AA:1C:BD:94:C2:66:B3:76:97:67:E7:23:25:F4:DD:E4:6C:48:3F:9F:37:AD:5F:11"
+      ]
+    }
+  }
+]
