@@ -1,0 +1,12 @@
+   [
+     {
+       "relation": ["delegate_permission/common.handle_all_urls"],
+       "target": {
+         "namespace": "android_app",
+         "package_name": "com.myclasstasks.app",
+         "sha256_cert_fingerprints": [
+           "14:73:B3:88:A8:02:DB:34:0C:04:F8:B9:96:0A:82:7A:80:4E:62:E0:4D:DF:13:86:A4:9E:CC:14:7F:E2:57:70"
+         ]
+       }
+     }
+   ]
